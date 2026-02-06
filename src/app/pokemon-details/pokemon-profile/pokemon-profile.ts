@@ -1,5 +1,5 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { PokeAPI } from 'pokeapi-types';
 import { PokemonSpritePipe } from '../../../pipes/pokemon-sprite.pipe';
 
@@ -7,6 +7,7 @@ import { PokemonSpritePipe } from '../../../pipes/pokemon-sprite.pipe';
   selector: 'app-pokemon-profile',
   imports: [NgOptimizedImage, PokemonSpritePipe],
   templateUrl: './pokemon-profile.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonProfile {
   pokemon = input<PokeAPI.Pokemon>();

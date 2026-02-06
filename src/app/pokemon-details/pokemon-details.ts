@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { takeUntilDestroyed, toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map, switchMap } from 'rxjs';
@@ -12,6 +12,7 @@ import { PokemonStats } from './pokemon-stats/pokemon-stats';
   selector: 'app-pokemon-details',
   imports: [BackLink, PokemonProfile, PokemonStats],
   templateUrl: './pokemon-details.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonDetails {
   private activatedRoute = inject(ActivatedRoute);

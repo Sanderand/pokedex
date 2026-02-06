@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   OnDestroy,
@@ -19,6 +20,7 @@ const LOAD_MORE_DATA_OFFSET_BOTTOM = '200px';
   selector: 'app-pokemon-list',
   imports: [PokemonListTile],
   templateUrl: './pokemon-list.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonList implements OnInit, OnDestroy {
   private listBottom = viewChild<ElementRef<HTMLDivElement>>('listBottom');
