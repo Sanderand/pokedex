@@ -1,0 +1,37 @@
+<div class="space-y-3">
+  <h2 class="text-xl font-semibold">Statistics</h2>
+
+  @if (isLoading()) {
+    <div class="space-y-3">
+      @for (i of [1, 2, 3, 4, 5, 6]; track i) {
+        <div class="space-y-1">
+          <div class="flex justify-between">
+            <div class="h-5 w-24 bg-gray-300 rounded"></div>
+            <div class="h-5 w-8 bg-gray-300 rounded"></div>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2">
+            <div class="bg-gray-300 h-2 rounded-full w-3/4"></div>
+          </div>
+        </div>
+      }
+    </div>
+  } @else if (stats()) {
+    <dl class="space-y-3">
+      @for (stat of stats(); track stat.stat.name) {
+        <div class="space-y-1">
+          <div class="flex justify-between text-sm">
+            <dt class="capitalize font-medium">{{ stat.stat.name.replace('-', ' ') }}</dt>
+            <dd class="text-gray-600">{{ stat.base_stat }}</dd>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2">
+            <!-- assuming 255 as the maximum of a skill -->
+            <div
+              class="bg-green-600 h-2 rounded-full transition-all"
+              [style.width.%]="(stat.base_stat / 255) * 100"
+            ></div>
+          </div>
+        </div>
+      }
+    </dl>
+  }
+</div>

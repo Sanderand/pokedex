@@ -1,0 +1,59 @@
+@if (isLoading()) {
+  <div class="flex flex-col md:flex-row gap-6 animate-pulse">
+    <div class="w-full aspect-square max-w-[300px] bg-gray-300 border-2 border-neutral-800"></div>
+
+    <div class="flex-1 space-y-4">
+      <div class="flex gap-2">
+        <div class="h-9 bg-gray-300 rounded flex-1 max-w-xs"></div>
+        <div class="h-9 w-20 bg-gray-300 rounded"></div>
+      </div>
+
+      <div class="flex gap-2">
+        <div class="h-7 w-20 bg-gray-300 rounded-full"></div>
+        <div class="h-7 w-20 bg-gray-300 rounded-full"></div>
+      </div>
+
+      <div class="space-y-2">
+        <div class="h-5 w-32 bg-gray-300 rounded"></div>
+        <div class="h-5 w-32 bg-gray-300 rounded"></div>
+      </div>
+    </div>
+  </div>
+} @else if (pokemon(); as pokemonDetails) {
+  <div class="flex flex-col md:flex-row gap-6">
+    <img
+      [ngSrc]="pokemonDetails.id | pokemonSprite"
+      width="300"
+      height="300"
+      [alt]="'Picture of ' + pokemonDetails.name"
+      priority
+      class="border-2 border-neutral-800"
+    />
+
+    <div class="flex-1 space-y-4">
+      <div class="flex gap-2">
+        <h1 class="text-3xl flex-1 font-bold capitalize">{{ pokemonDetails.name }}</h1>
+        <span class="text-3xl text-gray-600">#{{ pokemonDetails.id }}</span>
+      </div>
+
+      <div class="flex gap-2">
+        @for (type of pokemonDetails.types; track type.slot) {
+          <span
+            class="px-3 py-1 rounded-full text-sm font-medium bg-amber-200 text-amber-800 capitalize"
+          >
+            {{ type.type.name }}
+          </span>
+        }
+      </div>
+
+      <div class="space-y-0">
+        <p class="text-gray-700">
+          <span class="font-semibold">Height:</span> {{ pokemonDetails.height / 10 }} m
+        </p>
+        <p class="text-gray-700">
+          <span class="font-semibold">Weight:</span> {{ pokemonDetails.weight / 10 }} kg
+        </p>
+      </div>
+    </div>
+  </div>
+}

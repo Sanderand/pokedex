@@ -1,0 +1,17 @@
+<div class="flex flex-col h-screen bg-red-600">
+  <header class="flex px-4 py-4 items-center bg-red-800 text-white">
+    <a routerLink="/pokemons" class="text-2xl hover:underline">
+      <h1>Pokédex</h1>
+    </a>
+
+    <a routerLink="/pokemons/random" class="text-sm ml-auto hover:underline">Random Pokemon</a>
+  </header>
+
+  <div class="flex-1 overflow-auto w-full h-full p-4">
+    <main class="max-w-2xl mx-auto p-8 bg-white border-2 border-neutral-800">
+      <router-outlet />
+    </main>
+  </div>
+
+  <footer class="px-4 py-1 text-sm bg-red-800 text-white text-center">Created by Andre Sander</footer>
+</div>

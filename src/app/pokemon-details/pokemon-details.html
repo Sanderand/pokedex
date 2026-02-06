@@ -1,0 +1,15 @@
+<div class="flex flex-col gap-4">
+  <app-back-link href="/pokemons">Back to list</app-back-link>
+
+  @if (pokemon(); as pokemonDetail) {
+    @if (pokemonDetail.isLoading) {
+      <app-pokemon-profile [isLoading]="true"></app-pokemon-profile>
+      <app-pokemon-stats [isLoading]="true"></app-pokemon-stats>
+    } @else if (pokemonDetail.data) {
+      <app-pokemon-profile [pokemon]="pokemonDetail.data"></app-pokemon-profile>
+      <app-pokemon-stats [stats]="pokemonDetail.data.stats"></app-pokemon-stats>
+    } @else if (pokemonDetail.error) {
+      <p class="text-red-600">Error loading pokemon</p>
+    }
+  }
+</div>
